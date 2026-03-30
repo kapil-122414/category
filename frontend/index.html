@@ -113,9 +113,9 @@
         <input type="file" id="imageInput" />
         <img id="preview" />
 
-        <input type="text" placeholder="Category Name" />
-        <input type="text" placeholder="Slug" />
-        <textarea placeholder="Description"></textarea>
+        <input type="text" placeholder="Category Name" id="Categoryname" />
+        <input type="text" placeholder="Slug" id="slug" />
+        <textarea placeholder="Description" id="Description"></textarea>
 
         <button class="btn" onclick="closeModal()">Save</button>
       </div>
@@ -130,8 +130,33 @@
         modal.style.display = "flex";
       }
 
-      function closeModal() {
+      async function closeModal() {
         modal.style.display = "none";
+
+        const input = document.getElementById("imageInput");
+        const Categoryname = document.getElementById("Categoryname").value;
+        const slug = document.getElementById("slug").value;
+        const Description = document.getElementById("Description").value;
+
+        const formData = new FormData();
+
+        formData.append("Img", imageInput.files[0]); // 🔥 file
+        formData.append("Categoryname", Categoryname);
+        formData.append("Slug", slug); // 🔥 capital S
+        formData.append("Description", Description);
+
+        console.log("hyy");
+        try {
+          const res = await fetch("http://localhost:5000/api/category", {
+            method: "POST",
+
+            body: formData,
+          });
+          const data = await res.json();
+          console.log(data);
+        } catch (error) {
+          console.error(error);
+        }
       }
 
       // Image preview

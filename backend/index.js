@@ -6,10 +6,12 @@ const routes=require('./Routes/Routers');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 connectdb();
+const cors = require("cors");
+app.use(cors());
 const port = 5000;
 app.use('/api',routes);
 app.use("/uploads", express.static("uploads"));
-
+   
 
 app.get("/api", (req, res) => {
   console.log("hyy");

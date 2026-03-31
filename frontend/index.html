@@ -86,8 +86,73 @@
 
       img {
         width: 100px;
-        display: none;
+
         margin-top: 10px;
+      }
+
+      .table {
+        margin-left: 250px;
+        width: 80%;
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      thead {
+        background: #2563eb;
+        color: white;
+      }
+
+      th {
+        padding: 12px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+      }
+
+      td img {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      /* Buttons */
+      .edit-btn {
+        background: #22c55e;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .delete-btn {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .edit-btn:hover {
+        background: #16a34a;
+      }
+
+      .delete-btn:hover {
+        background: #dc2626;
       }
     </style>
   </head>
@@ -121,6 +186,21 @@
       </div>
     </div>
 
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Img</th>
+            <th>Categoryname</th>
+            <th>Slug</th>
+            <th>Description</th>
+            <th>edit</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody id="showdata"></tbody>
+      </table>
+    </div>
     <script>
       const modal = document.getElementById("modal");
       const input = document.getElementById("imageInput");
@@ -140,7 +220,7 @@
 
         const formData = new FormData();
 
-        formData.append("Img", imageInput.files[0]); // 🔥 file
+        formData.append("Img", input.files[0]); // 🔥 file
         formData.append("Categoryname", Categoryname);
         formData.append("Slug", slug); // 🔥 capital S
         formData.append("Description", Description);
@@ -154,11 +234,36 @@
           });
           const data = await res.json();
           console.log(data);
+          if (data.ok) {
+            dbdata();
+          }
         } catch (error) {
           console.error(error);
         }
       }
-
+      window.onload = dbdata;
+      //get data
+      async function dbdata() {
+        const showdata = document.getElementById("showdata");
+        const res = await fetch("http://localhost:5000/api/category");
+        const data = await res.json();
+        showdata.innerHTML = " ";
+        console.log(data);
+        const realData = data.data;
+        realData.forEach((item) => {
+          console.log(item);
+          showdata.innerHTML += `
+            <tr>
+    <td><img src="http://localhost:5000/${item.Img}"  width="50px" height="50px" alt="img"/></td>
+    <td>${item.Categoryname}</td>
+    <td>${item.Slug}</td>
+    <td>${item.Description}</td>
+    <td><button class="edit-btn">Edit</button></td>
+    <td><button class="delete-btn">Delete</button></td>
+  </tr>
+        `;
+        });
+      }
       // Image preview
       input.addEventListener("change", () => {
         const file = input.files[0];

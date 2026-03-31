@@ -1,22 +1,18 @@
-const multer=require("multer");
+const multer = require("multer");
 
-const storage=multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,'uploads/');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    const cleanName = file.originalname
+      .replace(/\s/g, "") // space remove
+      .replace(/\//g, "") // forward slash remove
+      .replace(/\\/g, ""); // backslash remove
 
-    },
-    filename:function(req,file,cb){
-        cb(null,Date.now()+ "-"+ file.originalname);
+    cb(null, Date.now() + "-" + cleanName);
+  },
+});
+const uploads = multer({ storage: storage });
 
-    }
-})
-const uploads=multer({storage:storage});
-
-
-module.exports=uploads;
-
-
-
-
-
-
+module.exports = uploads;

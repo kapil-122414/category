@@ -227,11 +227,14 @@
 
         console.log("hyy");
         try {
-          const res = await fetch("http://localhost:5000/api/category", {
-            method: "POST",
+          const res = await fetch(
+            "https://categoryapi-oluc.onrender.com/api/category",
+            {
+              method: "POST",
 
-            body: formData,
-          });
+              body: formData,
+            },
+          );
           const data = await res.json();
           console.log(data);
           if (data.ok) {
@@ -245,7 +248,9 @@
       //get data
       async function dbdata() {
         const showdata = document.getElementById("showdata");
-        const res = await fetch("http://localhost:5000/api/category");
+        const res = await fetch(
+          "https://categoryapi-oluc.onrender.com/api/category",
+        );
         const data = await res.json();
         showdata.innerHTML = " ";
         console.log(data);
@@ -254,7 +259,7 @@
           console.log(item);
           showdata.innerHTML += `
             <tr>
-    <td><img src="http://localhost:5000/${item.Img}"  width="50px" height="50px" alt="img"/></td>
+    <td><img src="https://categoryapi-oluc.onrender.com/${item.Img}"  width="50px" height="50px" alt="img"/></td>
     <td>${item.Categoryname}</td>
     <td>${item.Slug}</td>
     <td>${item.Description}</td>
@@ -272,6 +277,8 @@
           preview.style.display = "block";
         }
       });
+
+      
     </script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Category Data</title>
+  </head>
+  <body>
+    <h1>Category List</h1>
+    <div id="data"><button onclick="data()">hyy</button></div>
+
+    <script>
+      console.log("ghjkl;");
+
+      async function data() {
+        console.log("ghjkl;");
+        await fetch("https://categoryapi-oluc.onrender.com/api/category")
+          .then((res) => res.json())
+
+          .then((data) => {
+            console.log(data);
+
+            const container = document.getElementById("data");
+
+            data.forEach((item) => {
+              const div = document.createElement("div");
+              div.innerHTML = `
+            <h3>${item.id}</h3>
+            <img src="https://categoryapi-jrai.onrender.com/${item.Img}" width="150"/>
+          `;
+              container.appendChild(div);
+            });
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>

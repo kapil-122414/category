@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <title>Category Page</title>
     <style>
       body {
@@ -182,7 +183,7 @@
         <input type="text" placeholder="Slug" id="slug" />
         <textarea placeholder="Description" id="Description"></textarea>
 
-        <button class="btn" onclick="closeModal()">Save</button>
+        <button class="btn" id="saveBtn" onclick="closeModal()">Save</button>
       </div>
     </div>
 
@@ -205,14 +206,22 @@
       const modal = document.getElementById("modal");
       const input = document.getElementById("imageInput");
       const preview = document.getElementById("preview");
+      let liveapi = "https://categoryapi-oluc.onrender.com/api/category";
+      let editId = null;
 
       function openModal() {
         modal.style.display = "flex";
       }
+      function resetfrom() {
+        document.getElementById("Categoryname").value = "";
+        document.getElementById("slug").value = "";
+        document.getElementById("Description").value = "";
+        document.getElementById("preview").style.display = "none";
+        document.getElementById("saveBtn").innerText = "Save";
+        editId = null;
+      }
 
       async function closeModal() {
-        modal.style.display = "none";
-
         const input = document.getElementById("imageInput");
         const Categoryname = document.getElementById("Categoryname").value;
         const slug = document.getElementById("slug").value;
@@ -220,25 +229,34 @@
 
         const formData = new FormData();
 
-        formData.append("Img", input.files[0]); // 🔥 file
+        if (input.files[0]) {
+          formData.append("Img", input.files[0]);
+        } // 🔥 file
         formData.append("Categoryname", Categoryname);
-        formData.append("Slug", slug); // 🔥 capital S
+        formData.append("Slug", slug);
         formData.append("Description", Description);
 
         console.log("hyy");
         try {
-          const res = await fetch(
-            "https://categoryapi-oluc.onrender.com/api/category",
-            {
-              method: "POST",
+          let url = `${liveapi}`;
+          let method = "POST";
 
-              body: formData,
-            },
-          );
+          // 🔥 EDIT MODE
+          if (editId) {
+            url += "/" + editId;
+            method = "PATCH";
+          }
+
+          const res = await fetch(url, {
+            method: method,
+            body: formData,
+          });
           const data = await res.json();
           console.log(data);
-          if (data.ok) {
+          if (res.ok) {
             dbdata();
+            modal.style.display = "none";
+            resetfrom();
           }
         } catch (error) {
           console.error(error);
@@ -246,11 +264,10 @@
       }
       window.onload = dbdata;
       //get data
+
       async function dbdata() {
         const showdata = document.getElementById("showdata");
-        const res = await fetch(
-          "https://categoryapi-oluc.onrender.com/api/category",
-        );
+        const res = await fetch(`${liveapi}`);
         const data = await res.json();
         showdata.innerHTML = " ";
         console.log(data);
@@ -259,15 +276,68 @@
           console.log(item);
           showdata.innerHTML += `
             <tr>
-    <td><img src="https://categoryapi-oluc.onrender.com/${item.Img}"  width="50px" height="50px" alt="img"/></td>
+    <td><img src="${item.Img}"  width="50px" height="50px" alt="img"/></td>
     <td>${item.Categoryname}</td>
     <td>${item.Slug}</td>
     <td>${item.Description}</td>
-    <td><button class="edit-btn">Edit</button></td>
-    <td><button class="delete-btn">Delete</button></td>
+    <td><button class="edit-btn"   onclick="updateCategory('${item._id}')">Edit</button></td>
+    <td> <button class="delete-btn" onclick="deleteCategory('${item._id}')">
+    Delete
+  </button></td>
   </tr>
         `;
         });
+      }
+
+      //delete
+      async function deleteCategory(_id) {
+        try {
+          console.log(_id);
+          const res = await fetch(`${liveapi}/${_id}`, {
+            method: "delete",
+          });
+
+          const data = await res.json();
+          if (res.ok) {
+            alert("Deleted successfully ✅");
+            location.reload(); // page refresh
+          } else {
+            alert(data.message);
+          }
+        } catch (error) {
+          console.log("DELETE ERROR:", error);
+        }
+      }
+      //update
+      async function updateCategory(_id) {
+        try {
+          // 🔥 button change
+
+          editId = _id;
+
+          const res = await fetch(`${liveapi}/${_id}`);
+          const data = await res.json();
+
+          const item = data.data; // backend se ek hi object aana chahiye
+
+          // 🔥 form fill
+          document.getElementById("Categoryname").value = item.Categoryname;
+          document.getElementById("slug").value = item.Slug;
+          document.getElementById("Description").value = item.Description;
+
+          // 🔥 image preview
+          if (item.Img) {
+            preview.src = item.Img;
+            preview.style.display = "block";
+          }
+
+          // 🔥 button change
+          document.getElementById("saveBtn").innerText = "Update";
+
+          openModal();
+        } catch (error) {
+          console.log("Edit error:", error);
+        }
       }
       // Image preview
       input.addEventListener("change", () => {
@@ -277,8 +347,6 @@
           preview.style.display = "block";
         }
       });
-
-      
     </script>
   </body>
 </html>

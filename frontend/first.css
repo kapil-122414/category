@@ -1,0 +1,46 @@
+from{
+    display: block;
+    margin: 50px;
+  
+}
+.main{
+    display: flex;
+}
+.form{
+    width: 500px;
+
+}
+from label{
+    padding: 4px;
+    color: black;
+    display: block;
+}
+from>input{
+    border: 2px solid black;
+    color:black;
+   padding: 5px;
+   border-radius: 7px;
+}
+from>select{
+    padding: 5px;
+    font-size: medium;
+}
+from>button{
+    margin-top: 5px;
+    padding:5px;
+    display: block;
+    color: black;
+    background-color: aqua;
+    border-radius: 5px;
+    border: 2px solid rgb(44, 42, 42);
+}
+table,table>thead>tr>th{
+    
+    border: 2px solid black;
+    color: black;
+    padding: 10px;
+
+}
+.table{
+    margin: 50px;
+}

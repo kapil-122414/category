@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="first.css" />
+  </head>
+  <body>
+    <div class="main">
+    <div class="from">
+    <from>
+      <label>Student name</label>
+      <input type="text" id="student" name="student" placeholder="name" />
+      <label>Age</label>
+      <input type="number" id="age" name="age" placeholder="Age" />
+      <label>Graduation</label>
+      <select id="Graduation">
+        <option value="yes" id="yes">yes</option>
+        <option value="no" id="no">NO</option>
+      </select>
+      <button type="submit" onclick="showdata()">showdata</button>
+    </from>
+</div>
+      <div class="table">
+      <table>
+        <thead>
+          <tr>
+           <th>student name</th>
+           <th>age</th>
+           <th>Graduation</th>
+           <th> job Eligibility</th>
+          </tr>
+        </thead>
+        <tbody id="showdata"></tbody>
+      </table>
+    </div>
+    <script src="first.js"></script>
+  </body>
+</html>

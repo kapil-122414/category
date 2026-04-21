@@ -6,6 +6,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
@@ -13,20 +17,118 @@
   <body>
     <section>
       <div class="admin">
-        <div class="admin-panal"><h4>admin-panal</h4></div>
-        <div class="Dashboard"><h4>Dashboard</h4></div>
-        <div class="Categories">
+        <h3 class="panal">admin-panal</h3>
+
+        <div onclick="showpage('Dashboard')">
+          <i>🏠</i>
+          <h4>Dashboard</h4>
+        </div>
+
+        <div onclick="showpage('category')">
           <i class="fa-regular fa-folder"></i>
+
           <h4>Categories</h4>
         </div>
-        <div class="Products"><h4>Products</h4></div>
-        <div class="Blog"><h4>Blog</h4></div>
-        <div class="Bookings"><h4>Bookings</h4></div>
-        <div><h4>orderd</h4></div>
-        <div><h4>Setting</h4></div>
+        <div onclick="showpage('product')">
+          <i>📦</i>
+          <h4>Products</h4>
+        </div>
+        <div onclick="showpage('blog')">
+          <i class="fa-solid fa-file"></i>
+          <h4>Blog</h4>
+        </div>
+        <div onclick="showpage('Bookings')">
+          <i class="fa-solid fa-calendar"></i>
+          <h4>Bookings</h4>
+        </div>
+        <div onclick="showpage('orders')">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <h4>orders</h4>
+        </div>
+        <div onclick="showpage('setting')">
+          <i class="fa-solid fa-gear"></i>
+          <h4>Setting</h4>
+        </div>
       </div>
     </section>
 
-    <script href="./script.js"></script>
+    <section class="right-side">
+      <header>
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="search..." />
+        </div>
+        <div>
+          <div><i class="fa-solid fa-bell"></i></div>
+          <div>profile</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <div id="Dashboard">Dashboard</div>
+        <div id="Categories-page">
+          <div class="categories">
+            <div>
+              <h3>Categories</h3>
+              <p>Organize products into categories</p>
+            </div>
+            <div id="categoriesform">+ add category</div>
+          </div>
+          <div class="search-category">
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="search categories..." />
+            </div>
+            <div>
+              <select>
+                <option>All Statuses</option>
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="total-category">
+            <div>
+              <div><i class="fa-solid fa-tag"></i></div>
+              <div>
+                <p>Total Categories</p>
+                <h5></h5>
+              </div>
+            </div>
+            <div>
+              <div><i class="fa-solid fa-tag"></i></div>
+              <div>
+                <p>Active</p>
+                <h5></h5>
+              </div>
+            </div>
+            <div>
+              <div>
+                <i class="fa-solid fa-tag"></i>
+              </div>
+              <div>
+                <p>Featured</p>
+                <h5></h5>
+              </div>
+            </div>
+            <div>
+              <div><i class="fa-solid fa-file-image"></i></div>
+              <div>
+                <p>Total Products</p>
+                <h5></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- product -->
+        <div id="product-page">product</div>
+        <div id="blog">blog</div>
+        <div id="Bookings">Bookings</div>
+        <div id="orders">orders</div>
+        <div id="setting">setting</div>
+      </div>
+    </section>
+    <script src="./script.js"></script>
   </body>
 </html>

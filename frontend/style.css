@@ -114,20 +114,92 @@ header div:nth-child(2){
     font-size: small;
     padding-top: 8px;
 }
-#categoriesform{
-    margin-right: 35px;
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    font-size: small;
-    font-weight: 100;
-    background-color: #155DFC;
-    width: 100px;
-    height: 30px;
-    color: #FFFFFF;
-    border-radius: 10px;
-    
+
+/* Modal Background */
+.categoriesform {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none; /* default hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
+
+/* Modal Box */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Inputs */
+.modal-content input,
+.modal-content textarea,.modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,.modal-content select:focus {
+  border-color: #333;
+}
+.modal-content label{
+    font-size: small;
+}
+.status{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+
+
+/* Button */
+.btn {
+  background: rgb(44, 19, 185);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  
+}
+.button-group{
+    display: flex;
+    gap: 10px;
+}
+
+.button-group .btn{
+    width: 50%;
+}
+.openModal{
+    margin-right: 30px;
+    color: #fff;
+    background-color: #1447E6;
+    padding: 10px 10px;
+    border-radius: 6px;
+    border: none;
+}
+/* Image Preview */
+#preview {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: none;
+  border-radius: 6px;
+}
+
 .search-category{
     
     width: 95%;
@@ -186,7 +258,7 @@ header div:nth-child(2){
    align-items: center;
 }
 .total-category>div>div:nth-child(1){
-    width: 50px;
+    width: 60px;
     height: 50px;
     border-radius:10px;
     align-content: center;
@@ -230,3 +302,75 @@ header div:nth-child(2){
     
 }
 
+/* table in category */
+.table-container {
+    margin-top: 20px;
+    font-size: small;
+    color: #6A7282;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+
+thead {
+  background: #f5f5f5;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  border-top: 1px solid #eee;
+}
+
+.category {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.category img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.category h4 {
+  margin: 0;
+}
+
+.category p {
+  margin: 0;
+  font-size: 12px;
+  color: gray;
+}
+
+.badge {
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: green;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.status.inactive {
+  background: #eee;
+  color: gray;
+  padding: 3px 10px;
+  border-radius: 10px;
+}

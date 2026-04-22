@@ -72,7 +72,52 @@
               <h3>Categories</h3>
               <p>Organize products into categories</p>
             </div>
-            <div id="categoriesform">+ add category</div>
+            <button onclick="openModal()" class="openModal">
+              + Add Category
+            </button>
+
+            <div class="categoriesform" id="categoriesform">
+              <div class="modal-content">
+                <h3>Add Category</h3>
+                <label>Category Image</label>
+                <input type="file" id="imageInput" />
+                <img id="preview" />
+                <label>Category Name *</label>
+                <input
+                  type="text"
+                  placeholder="Category Name"
+                  id="Categoryname"
+                />
+                <label>URL Slug *</label>
+                <input type="text" placeholder=" URL Slug" id="slug" readonly />
+                <label>Description</label>
+                <textarea placeholder="Description" id="Description"></textarea>
+
+                <div class="status">
+                  <div>
+                    <label>Display Order *</label>
+
+                    <input
+                      type="number"
+                      placeholder="Display Order"
+                      id="categories-order"
+                    />
+                  </div>
+                  <div>
+                    <label>Status *</label>
+                    <select id="Status">
+                      <option>All Statuses</option>
+                      <option>Active</option>
+                      <option>Inactive</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="button-group">
+                  <button class="btn" onclick="cencel()">Cancel</button>
+                  <button class="btn" onclick="closeModal()">Save</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="search-category">
             <div>
@@ -118,6 +163,27 @@
                 <h5></h5>
               </div>
             </div>
+          </div>
+          <!-- table section -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>CATEGORY</th>
+                  <th>DESCRIPTION</th>
+                  <th>PRODUCTS</th>
+                  <th>ORDER</th>
+                  <th>STATUS</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+
+              <tbody id="categoryTable">
+                <!-- data yaha JS se aayega -->
+              </tbody>
+            </table>
+
+            <p id="resultCount"></p>
           </div>
         </div>
 

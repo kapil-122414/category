@@ -17,7 +17,7 @@
   <body>
     <section>
       <div class="admin">
-        <h3 class="panal">admin-panal</h3>
+        <h3 class="panal">admin-panel</h3>
 
         <div onclick="showpage('Dashboard')">
           <i>🏠</i>
@@ -112,9 +112,18 @@
                     </select>
                   </div>
                 </div>
+                <div class="featured">
+                  <div>
+                    <label>Featured Category</label>
+                    <p>Display this category prominently on homepage</p>
+                  </div>
+                  <div><input type="checkbox" id="featured" /></div>
+                </div>
                 <div class="button-group">
                   <button class="btn" onclick="cencel()">Cancel</button>
-                  <button class="btn" onclick="closeModal()">Save</button>
+                  <button class="btn" id="saveBtn" onclick="closeModal()">
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
@@ -122,13 +131,17 @@
           <div class="search-category">
             <div>
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" placeholder="search categories..." />
+              <input
+                type="text"
+                placeholder="search categories..."
+                oninput="handleSearch(event)"
+              />
             </div>
             <div>
-              <select>
-                <option>All Statuses</option>
-                <option>Active</option>
-                <option>Inactive</option>
+              <select onchange="handleStatus(event)">
+                <option value="">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
               </select>
             </div>
           </div>
@@ -184,6 +197,10 @@
             </table>
 
             <p id="resultCount"></p>
+            <div
+              id="pagination"
+              style="margin-left: 200px; margin-top: 20px"
+            ></div>
           </div>
         </div>
 

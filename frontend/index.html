@@ -66,6 +66,7 @@
 
       <div class="content">
         <div id="Dashboard">Dashboard</div>
+        <!-- category page  -->
         <div id="Categories-page">
           <div class="categories">
             <div>
@@ -205,7 +206,46 @@
         </div>
 
         <!-- product -->
-        <div id="product-page">product</div>
+        <div id="product-page">
+          <div class="product">
+            <div>
+              <h3>Products</h3>
+              <p>Manage your artwork inventory</p>
+            </div>
+
+            <button onclick="openproduct()" class="openpro">
+              + Add Products
+            </button>
+            <div class="productform" id="productforms">
+              <div class="productcontent">
+                <h5>Add New Product</h5>
+
+                <label>product name</label>
+                <input type="text" placeholder="product name" id="name" />
+              </div>
+            </div>
+          </div>
+          <!-- searc product -->
+          <div class="search-product">
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search product..."
+                oninput="searchproduct(event)"
+              />
+            </div>
+            <div>
+              <select onchange="searchstatus(event)">
+                <option value="">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- blog  -->
         <div id="blog">blog</div>
         <div id="Bookings">Bookings</div>
         <div id="orders">orders</div>
@@ -213,5 +253,6 @@
       </div>
     </section>
     <script src="./script.js"></script>
+    <script src="./product.js"></script>
   </body>
 </html>

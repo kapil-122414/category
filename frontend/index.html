@@ -212,16 +212,92 @@
               <h3>Products</h3>
               <p>Manage your artwork inventory</p>
             </div>
+            <div>
+              <button onclick="openproduct()" class="openpro">
+                + Add Products
+              </button>
+            </div>
 
-            <button onclick="openproduct()" class="openpro">
-              + Add Products
-            </button>
             <div class="productform" id="productforms">
               <div class="productcontent">
                 <h5>Add New Product</h5>
 
-                <label>product name</label>
-                <input type="text" placeholder="product name" id="name" />
+                <label>Product Image</label>
+                <input type="file" id="proimg" />
+                <img id="propreview" />
+                <label>Product name</label>
+                <input type="text" placeholder="product name" id="proname" />
+                <label>Slug</label>
+                <input type="text" placeholder="Slug" id="proslug" readonly />
+                <label>Description</label>
+                <textarea
+                  placeholder="Description"
+                  id="prodescrition"
+                ></textarea>
+                <label>Short Description</label>
+                <input
+                  type="text"
+                  placeholder="short-description"
+                  id="proshort"
+                />
+                <label>Brand</label>
+                <input type="text" placeholder="Brand name" id="probrand" />
+                <div class="price">
+                  <div>
+                    <label>MRP</label
+                    ><input type="number" min="0" id="promrp" />
+                  </div>
+                  <div>
+                    <label>Discount</label
+                    ><input type="number" min="0" id="prodiscount" />
+                  </div>
+                  <div>
+                    <label>Price</label>
+                    <input type="number" min="0" id="proprice" />
+                  </div>
+                </div>
+                <label>Stock number</label>
+                <input
+                  type="number"
+                  placeholder="Stock"
+                  id="prostock"
+                  min="0"
+                />
+
+                <label>Staus</label>
+                <select id="status">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+                <h3>Variants (Size + Color + Price + Stock)</h3>
+                <div id="variantContainer"></div>
+                <div class="probtn">
+                  <div>
+                    <button type="button" class="btn" onclick="addVariant()">
+                      + Add Variant
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="submit"
+                      class="btn"
+                      id="prosubmit"
+                      onclick="prosubmit()"
+                    >
+                      Submit Product
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="Cancel"
+                      class="btn"
+                      id="procencel"
+                      onclick="procCancel()"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -227,6 +227,9 @@
                 <img id="propreview" />
                 <label>Product name</label>
                 <input type="text" placeholder="product name" id="proname" />
+                <select id="category">
+                  <option value="">Select Category</option>
+                </select>
                 <label>Slug</label>
                 <input type="text" placeholder="Slug" id="proslug" readonly />
                 <label>Description</label>
@@ -249,20 +252,19 @@
                   </div>
                   <div>
                     <label>Discount</label
-                    ><input type="number" min="0" id="prodiscount" />
+                    ><input
+                      type="number"
+                      min="0"
+                      id="prodiscount"
+                      max="100"
+                      min="0"
+                    />
                   </div>
                   <div>
                     <label>Price</label>
                     <input type="number" min="0" id="proprice" />
                   </div>
                 </div>
-                <label>Stock number</label>
-                <input
-                  type="number"
-                  placeholder="Stock"
-                  id="prostock"
-                  min="0"
-                />
 
                 <label>Staus</label>
                 <select id="status">
@@ -318,6 +320,24 @@
                 <option value="inactive">Inactive</option>
               </select>
             </div>
+          </div>
+          <!-- table -->
+          <div class="pdata-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>P.Image</th>
+                  <th>P.Name</th>
+                  <th>P.category</th>
+                  <th>P.Price</th>
+                  <th>P.Stock</th>
+                  <th>P.status</th>
+                  <th>P.action</th>
+                  <th><table></table></th>
+                </tr>
+              </thead>
+            </table>
+            <tbody id="productdata"></tbody>
           </div>
         </div>
 

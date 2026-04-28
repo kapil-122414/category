@@ -328,7 +328,7 @@ color: #333;
 }
 
 /* table in category */
-.table-container {
+.table-container,.pdata-table {
     margin-top: 20px;
     font-size: small;
     color: #6A7282;

@@ -162,6 +162,7 @@ async function showcategory() {
 <tr>
   <td>
     <div style="display:flex;align-items:center;gap:10px;">
+    
       <img src="${item.Img}" width="50" height="50"/>
       <div>
         <div>${item.Categoryname}</div>

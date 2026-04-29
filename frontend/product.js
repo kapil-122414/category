@@ -177,15 +177,16 @@ async function prosubmit() {
   if (!categoryId) {
     return alert("Please select category");
   }
-  variants.forEach((v) => {
+  variants.forEach((v, i) => {
     if (v.image) {
-      formData.append("variantImages", v.image);
+      formData.append(`variantImages_${i}`, v.image);
     }
   });
 
-  formData.append("variant", JSON.stringify(variants));
+  const cleanVariants = variants.map(({ image, ...rest }) => rest);
 
-  // 👉 backend ke hisaab se keys
+  formData.append("variant", JSON.stringify(cleanVariants));
+
   formData.append("Productname", proname);
   formData.append("slug", proslug);
   formData.append("description", prodescrition);
@@ -209,6 +210,7 @@ async function prosubmit() {
       alert("successfully post data ");
       procCancel();
       proreset();
+      getproduct();
     } else {
       alert(data.message || "Error ");
     }
@@ -229,5 +231,84 @@ async function loadCategories() {
     option.textContent = cat.Categoryname;
 
     select.appendChild(option);
+  });
+}
+
+async function getproduct() {
+  const showdataa = document.getElementById("productdata");
+  const res = await fetch("http://localhost:5000/api/product");
+  const data = await res.json();
+  showdataa.innerHTML = " ";
+  const reldata = data.data;
+  console.log(reldata);
+  if (!reldata) {
+    alert("not found data");
+  }
+
+  reldata.forEach((items) => {
+    showdataa.innerHTML += `
+    
+    <tr>
+    <td>
+    <div style="display:flex;align-items:center;gap:10px;">
+    <img src="${items.Img?.url}"width="50" height="50"></img>
+     
+     <div>
+      <div>${items.Productname}</div>
+     <small>/${items.slug}</small> 
+     </div>
+    
+     
+    </div>
+    </td>
+    <td>${items.categoryId?.Categoryname}</td>
+<td>
+    <div>Price-${items.price}</div>
+    <div>Discount-${items.discount}%</div>
+    <div>MRP-${items.mrp}</div>
+    </td>
+    <td>
+    ${items.shortdiscription}
+</td>    
+<td>
+<div  class="${items.status === "active" ? "active" : "inactive"}">
+${items.status}
+</div>
+  
+</td>
+  
+</td>
+   
+<td>
+
+    <button  class="btn"onclick='showVariants(${JSON.stringify(items.variant)})'>
+     Variants
+    </button>
+</td>
+
+<td>
+<button onclick="updateproduct('${items._id}')">✏️</button>
+    <button onclick="deleteproduct('${items._id}')">🗑️</button>
+</td>
+    </tr>  
+    `;
+  });
+}
+getproduct();
+
+function showVariants(variants) {
+  const varinatdata = document.getElementById("Variants-data");
+  console.log(variants);
+
+  if (!variants || variants.length === 0) {
+    varinatdata.innerHTML = "<P> Not variants </p>";
+    return;
+  }
+  let showvarint = "<h3>Varinats</h3>";
+
+  variants.forEach((v) => {
+    showvarint += `   
+    
+     `;
   });
 }

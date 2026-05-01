@@ -29,14 +29,16 @@
 
           <h4>Categories</h4>
         </div>
+        <div onclick="showpage('Brand')">
+          <i class="fa-solid fa-file"></i>
+          <h4>Brand</h4>
+        </div>
+
         <div onclick="showpage('product')">
           <i>📦</i>
           <h4>Products</h4>
         </div>
-        <div onclick="showpage('blog')">
-          <i class="fa-solid fa-file"></i>
-          <h4>Blog</h4>
-        </div>
+
         <div onclick="showpage('Bookings')">
           <i class="fa-solid fa-calendar"></i>
           <h4>Bookings</h4>
@@ -204,6 +206,8 @@
             ></div>
           </div>
         </div>
+        <!-- blog  -->
+        <div id="Brand"></div>
 
         <!-- product -->
         <div id="product-page">
@@ -227,6 +231,7 @@
                 <img id="propreview" />
                 <label>Product name</label>
                 <input type="text" placeholder="product name" id="proname" />
+                <label>Select Category</label>
                 <select id="category">
                   <option value="">Select Category</option>
                 </select>
@@ -245,6 +250,13 @@
                 />
                 <label>Brand</label>
                 <input type="text" placeholder="Brand name" id="probrand" />
+                <label>Total Stock</label>
+                <input
+                  type="number"
+                  placeholder="Stock"
+                  min="0"
+                  id="prostock"
+                />
                 <div class="price">
                   <div>
                     <label>MRP</label
@@ -343,8 +355,6 @@
           </div>
         </div>
 
-        <!-- blog  -->
-        <div id="blog">blog</div>
         <div id="Bookings">Bookings</div>
         <div id="orders">orders</div>
         <div id="setting">setting</div>

@@ -1,6 +1,10 @@
+let categoriesLoaded = false;
 async function openproduct() {
   document.getElementById("productforms").style.display = "flex";
-  loadCategories();
+  if (!categoriesLoaded) {
+    await loadCategories();
+    categoriesLoaded = true;
+  }
 }
 
 async function closeproduct() {
@@ -24,7 +28,6 @@ async function proreset() {
 
   preview.src = "";
   preview.style.display = "none";
-
   document.getElementById("proname").value = "";
   document.getElementById("proslug").value = "";
   document.getElementById("prodescrition").value = "";
@@ -35,6 +38,10 @@ async function proreset() {
   document.getElementById("proprice").value = "";
   document.getElementById("prostock").value = "";
   document.getElementById("status").value = "";
+  document.getElementById("category").selectedIndex = 0;
+  document.getElementById("proimg").value = "";
+  document.getElementById("variantContainer").innerHTML = "";
+  document.getElementById("stock").value = "";
 }
 function addVariant() {
   const div = document.createElement("div");
@@ -68,9 +75,8 @@ document.getElementById("proname").addEventListener("input", function () {
 // cancel product
 function procCancel() {
   document.getElementById("productforms").style.display = "none";
-  alert("Button clicked!");
+
   proreset();
-  document.getElementById("variantContainer").innerHTML = "";
 }
 // total  price
 
@@ -224,6 +230,7 @@ async function loadCategories() {
   const data = await res.json();
 
   const select = document.getElementById("category");
+  select.innerHTML = '<option value="">Select Category</option>';
 
   data.forEach((cat) => {
     const option = document.createElement("option");

@@ -7,8 +7,9 @@ let statusFilter = "";
 function showpage(page) {
   document.getElementById("Dashboard").style.display = "none";
   document.getElementById("Categories-page").style.display = "none";
+  document.getElementById("Brand").style.display = "none";
   document.getElementById("product-page").style.display = "none";
-  document.getElementById("blog").style.display = "none";
+
   document.getElementById("Bookings").style.display = "none";
   document.getElementById("orders").style.display = "none";
   document.getElementById("setting").style.display = "none";
@@ -18,8 +19,8 @@ function showpage(page) {
     document.getElementById("Categories-page").style.display = "block";
   } else if (page === "product") {
     document.getElementById("product-page").style.display = "block";
-  } else if (page === "blog") {
-    document.getElementById("blog").style.display = "block";
+  } else if (page === "Brand") {
+    document.getElementById("Brand").style.display = "block";
   } else if (page === "Bookings") {
     document.getElementById("Bookings").style.display = "block";
   } else if (page === "orders") {
@@ -69,6 +70,7 @@ function resetfrom() {
   document.getElementById("Status").value = "";
   document.getElementById("preview").style.display = "none";
   document.getElementById("saveBtn").innerText = "Save";
+
   editId = null;
 }
 
@@ -94,7 +96,7 @@ async function closeModal() {
   const order = document.getElementById("categories-order").value;
   const Status = document.getElementById("Status").value;
 
-  // ✅ validation
+  // validation
   if (!Categoryname || !slug || !order) {
     alert("Please fill all required fields");
     return;
@@ -127,14 +129,14 @@ async function closeModal() {
     console.log("Response:", data);
 
     if (res.ok) {
-      alert("Category Added ✅");
+      alert("Category Added ");
       showcategory();
       const modal = document.getElementById("categoriesform");
       modal.style.display = "none";
 
       resetfrom();
     } else {
-      alert("Error ❌");
+      alert("Error ");
     }
   } catch (error) {
     console.error("Error:", error);
@@ -311,9 +313,25 @@ async function updateCategory(_id) {
       preview.src = item.Img;
       preview.style.display = "block";
     }
+
     document.getElementById("saveBtn").innerText = "Update";
     openModal();
   } catch (error) {
     alert("no edit", error);
   }
+}
+
+// auto description
+async function generatedescription() {
+  const desciption = document.getElementById("Description").value;
+  const res = await fetch("http://localhost:5000/api/ai-description", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ categoryName: name }),
+  });
+  const data = await res.json();
+
+  document.getElementById("Description").value = data.description;
 }

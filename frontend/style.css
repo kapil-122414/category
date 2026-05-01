@@ -82,7 +82,7 @@ header div:nth-child(2){
 
 #Dashboard,
 #Categories-page ,
-#blog,
+#Brand,
 #Bookings,
 #orders,
 #setting
@@ -141,11 +141,20 @@ header div:nth-child(2){
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content textarea{
+padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
 }
 
 /* Inputs */
 .modal-content input,
-.modal-content textarea,
+
 .modal-content select ,
 /* add the product data */
 .productcontent >input,

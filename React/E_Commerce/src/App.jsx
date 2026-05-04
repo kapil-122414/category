@@ -1,15 +1,19 @@
 
 
 
+import card from "./components/cards";
 
 const App = () => {
+  const user="kapil";
   return (
-    <>
-      <h1>hyy</h1>
-     <div>papaapsp</div>
-     <div>chacaaa</div>
-      
-    </>
+   <>
+   <div className="cards">
+    {card()}
+      {card()}
+        {card()}
+          {card()}
+   </div>
+   </>
   )
 }
 

@@ -8,3 +8,29 @@ body{
   background-color: aqua;
   color :black;
 }
+.card{
+  margin: 5px;
+  border-radius: 20px;
+  padding:30px;
+text-align: center;
+color: #fff;
+  width: 250px;
+  height: px;
+  background-color: black;
+}
+.card img{
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.card button{
+  padding: 10px;
+  color: black;
+  border-radius: 10px;
+  border: none;
+}
+.cards{
+  display: flex;
+  
+}

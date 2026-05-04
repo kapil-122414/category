@@ -206,9 +206,76 @@
             ></div>
           </div>
         </div>
-        <!-- blog  -->
-        <div id="Brand"></div>
+        <!-- brand  -->
+        <div id="Brand">
+          <div class="Brands">
+            <div>
+              <h3>Brands</h3>
+              <p>Manage your product brands and manufacturers</p>
+            </div>
+            <div>
+              <button onclick="openbrand()" class="openpro">+ Add Brand</button>
+            </div>
 
+            <div id="Brandsfrom">
+              <div class="brandcontent">
+                <h5>Add New Product</h5>
+
+                <label>Brand Name</label>
+                <input type="text" placeholder="Brand name" id="Brandname" />
+
+                <label>Staus</label>
+                <select id="Brandstatus">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+                <button onclick="addBrand()">Add Brand</button>
+              </div>
+            </div>
+          </div>
+          <div class="total-brands">
+            <div>
+              <div><i class="fa-regular fa-square"></i></div>
+              <div>
+                <p>Total Brand</p>
+                <h5></h5>
+              </div>
+            </div>
+            <div>
+              <div><i class="fa-solid fa-check"></i></div>
+              <div>
+                <p>Active</p>
+                <h5></h5>
+              </div>
+            </div>
+            <div>
+              <div>
+                <i class="fa-regular fa-circle"></i>
+              </div>
+              <div>
+                <p>Inactive</p>
+                <h5></h5>
+              </div>
+            </div>
+          </div>
+          <div class="search-category brands-search">
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="search categories..."
+                oninput="brandSearch(event)"
+              />
+            </div>
+            <div>
+              <select onchange="brnadSearch(event)">
+                <option value="">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <!-- product -->
         <div id="product-page">
           <div class="product">
@@ -362,5 +429,6 @@
     </section>
     <script src="./script.js"></script>
     <script src="./product.js"></script>
+    <script src="./brand.js"></script>
   </body>
 </html>

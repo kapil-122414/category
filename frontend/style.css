@@ -81,8 +81,8 @@ header div:nth-child(2){
 }
 
 #Dashboard,
+#product-page,
 #Categories-page ,
-#Brand,
 #Bookings,
 #orders,
 #setting
@@ -90,12 +90,17 @@ header div:nth-child(2){
   display: none;
 }
 
-.content> #Categories-page,.content>#product-page{
+.content> #Categories-page,
+.content>#product-page,
+.content>#Brand{
     background-color: #F9FAFB;
     height: auto;
     width: 100%;
 }
-#Categories-page>div:nth-child(1),#product-page>.product{
+#Categories-page>div:nth-child(1),
+#product-page>.product,
+#Brand>.Brands
+{
     width: 100%;
     display: flex;
     align-items: center;
@@ -111,7 +116,11 @@ header div:nth-child(2){
     margin: 0px 0px 24px 30px;
     
 }
-#Categories-page>.categories>div:nth-child(1)>p,#product-page>.product>div:nth-child(1)>p{
+#Categories-page>
+.categories>div:nth-child(1)>p,
+#product-page>
+.product>div:nth-child(1)>p,
+#Brand>.Brands>div:nth-child(1)>p{
     color: #6A7282;
     font-weight: 400;
     font-size: small;
@@ -273,7 +282,8 @@ color: #333;
     outline: none;
 }
 /* total category */
-.total-category{
+.total-category,
+.total-brands{
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
@@ -282,7 +292,9 @@ color: #333;
     height: auto;
 
 }
-.total-category>div{
+.total-category>div,
+.total-brands>div
+{
     display: flex;
     height: 101px;
     width: 262px;
@@ -291,7 +303,8 @@ color: #333;
     border-radius: 10px;
    align-items: center;
 }
-.total-category>div>div:nth-child(1){
+.total-category>div>div:nth-child(1),
+.total-brands>div>div:nth-child(1){
     width: 60px;
     height: 50px;
     border-radius:10px;
@@ -302,22 +315,27 @@ color: #333;
     
 
 }
-.total-category>div>div:nth-child(2){
+.total-category>div>div:nth-child(2),
+.total-brands>div>div:nth-child(2){
     width: 100%;
     margin-left:5px;
     align-content: center;
 }
-.total-category>div>div:nth-child(2)>p{
+.total-category>div>div:nth-child(2)>p,
+.total-brands>div>div:nth-child(2)>p{
     font-size: small;
     color: #6A7282;
 }
-.total-category>div:nth-child(1)>div:nth-child(1){
+.total-category>div:nth-child(1)>div:nth-child(1),
+.total-brands>div:nth-child(1)>div:nth-child(1)
+{
     align-content: center;
     color: #155DFC;
     background-color: #EFF6FF;
     
 }
-.total-category>div:nth-child(2)>div:nth-child(1){
+.total-category>div:nth-child(2)>div:nth-child(1),
+.total-brands>div:nth-child(2)>div:nth-child(1){
     align-content: center;
     color: #00A63E;
     background-color: #F0FDF4;
@@ -517,4 +535,36 @@ color: #000000;
   height:500px ;
   width: 500px;
   background-color: red;
+}
+/* brand */
+
+#Brand >.Brands>div:nth-child(1){
+padding: 20px;
+}
+.brands-search{
+  margin-top: 30px;
+}
+#Brandsfrom{
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none; /* default hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.brandcontent{
+  background: #fff;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
 }

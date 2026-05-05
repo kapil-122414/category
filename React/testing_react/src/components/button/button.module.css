@@ -1,0 +1,10 @@
+.main{
+    background-color: aqua;
+}
+.btn{
+    width: fit-content;
+    padding: 12px 14px;
+    background-color: brown;
+    border-color: aqua;
+    border-radius: 10px;
+}

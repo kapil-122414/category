@@ -1,36 +1,110 @@
 *{
-  padding:0px;
+  padding: 0px;
   margin: 0px;
+
 }
-body{
-  width:100%;
-  height: 100%;
-  background-color: aqua;
-  color :black;
+.body{
+  color: #000;
 }
-.card{
-  margin: 5px;
-  border-radius: 20px;
-  padding:30px;
-text-align: center;
-color: #fff;
-  width: 250px;
-  height: px;
-  background-color: black;
-}
-.card img{
-  object-fit: cover;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
-.card button{
-  padding: 10px;
-  color: black;
-  border-radius: 10px;
-  border: none;
-}
-.cards{
+.main{
   display: flex;
+  flex-wrap: wrap;
+}
+.parent{
+  color: #fff;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+ .parent >.child{
+
+  background-color: #fff;
+  height: 270px;
+  width: 250px;
+  border-radius: 20px;
+  gap:10px;
+  margin:20px;
   
+  
+  
+}
+.top{
+ padding: 6PX;
+    display: flex;
+    text-align: center;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.top img{
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+
+
+}
+.top div:nth-child(1){
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  
+
+}
+
+
+.top>div:nth-child(2){
+  border: 2px solid black;
+
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  color: #000000;
+}
+
+.center{
+  padding: 10px;
+  color: #000;
+  border-bottom: 1px solid black;
+
+}
+.center >div:nth-child(2){
+  display: flex;
+  gap: 20px;
+}
+.center >div:nth-child(2)>div{
+  margin-top: 10px;
+  padding: 5px ;
+  border: 1px solid ;
+  border-radius: 5px;
+}
+.bottom{
+  margin-top: 10px;
+  display: flex;
+  color: #000000;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom >div:nth-child(2)>button{
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.main {
+  width: 300px;
+}
+.alldiv{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000000;
 }

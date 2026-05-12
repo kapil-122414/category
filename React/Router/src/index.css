@@ -1,0 +1,17 @@
+
+
+
+
+
+.nave{
+  background-color: rgb(110, 224, 224);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.content{
+  display: flex;
+  gap: 30px;
+}

@@ -40,3 +40,22 @@
 .darkmode{
     cursor: pointer;
 }
+@media(max-width:768px){
+    .search{
+    padding: 0px;
+  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+gap:2px;
+    
+
+}
+.search>div:nth-child(1)>input{
+    border: none;
+  
+   width: 100%;
+    background: none;
+      outline: none;
+}
+}

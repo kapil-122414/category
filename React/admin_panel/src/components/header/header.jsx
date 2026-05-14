@@ -1,33 +1,40 @@
 import style from "./header.module.css";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaSearch, FaMoon, FaUser } from "react-icons/fa";
-const Header = () => {
-  const [theme, settheme] = useState("light");
+import From from "../froms/from";
 
-  const darkmode = () => {
-    if (theme === "light") {
-      settheme("dark");
-    } else {
-      settheme("light");
-    }
-  };
+const Header = ({ darkMode, setDarkMode }) => {
+  const [showForm, setshowfrom] = useState(false);
+
   return (
-    <div className={style.main} className="topbar">
+    <div className={`${style.main} topbar`}>
       <div className={style.search}>
         <div>
-          {" "}
-          <FaSearch className="text-black" />
+          <FaSearch className={darkMode ? "text-white" : "text-black"} />
+
           <input type="text" placeholder="Search anything.." />
         </div>
+
         <div className="flex gap-5">
           <div>
-            <FaMoon className={style.darkmode} onClick={darkmode} />
+            <FaMoon
+              className={
+                darkMode
+                  ? "text-white cursor-pointer"
+                  : "text-black cursor-pointer"
+              }
+              onClick={() => setDarkMode(!darkMode)}
+            />
           </div>
-          <div>
-            <FaUser />
+
+          <div className="user">
+            <FaUser
+              className={darkMode ? "text-white" : "text-black"}
+              onClick={() => setshowfrom(true)}
+            />
           </div>
         </div>
+        {showForm && <From setshowfrom={setshowfrom} />}
       </div>
     </div>
   );

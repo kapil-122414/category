@@ -227,7 +227,60 @@ tbody tr:hover{
   font-weight: 700;
 }
 
-
+/* dark mode or light mode */
+.light_section,
+.dark_section{
+  min-height: 100vh;
+  transition: 0.3s;
+}
+.light_section{
+  background: #F4F7FE;
+  color: black;
+}
+.dark_section{
+  background: #0F172A;
+  color: white;
+}
+.dark_section .table-container{
+  background: #1E293B;
+  color: white;
+}
+.dark_section input{
+  background: #1E293B;
+  color: white;
+}
+.dark_section input{
+  background: #1E293B;
+  color: white;
+}
+.dark_section .Cards{
+  background: #1E293B;
+  color: white;
+}
+.dark_section table{
+  color: white;
+}
+.dark_section .topbar{
+  background: #111827;
+}
+.dark_section .table-container{
+  background: #1E293B;
+  color: white;
+}
+.dark_section th,
+.dark_section td,
+.dark_section h2{
+  color: white;
+}
+.dark_section .Cards{
+  background: #1E293B;
+  color: white;
+}
+.dark_section input{
+  background: #334155;
+  color: white;
+  border: none;
+}
 /*  RESPONSIVE */
 
 .topbar{
@@ -241,7 +294,41 @@ tbody tr:hover{
   align-items: center;
 }
 
+.user{
+  position: relative;
+}
+.from{
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.5);
+
+  z-index: 2000;
+}
+
+.fromdata{
+  height: 500px;
+  width: 500px;
+
+  background-color: white;
+  color: black;
+
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.logindata input{
+  display: block;
+  border: 2px solid black;
+}
 @media (max-width: 768px) {
   .toggle_btn {
     display: block;
@@ -259,5 +346,14 @@ tbody tr:hover{
   section {
     width: 100%;
     margin-left: 0;
+  }
+  .topbar{
+    padding: 0px 45px;
+  }
+  .toggle_btn{
+    position: fixed;
+    top: 14px;
+    left:11px;
+    z-index: 1000;
   }
 }

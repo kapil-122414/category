@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../cards/cards";
 
-const Dashboard = () => {
+const Dashboard = ({darkMode}) => {
   const [users, setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
@@ -9,33 +9,24 @@ const Dashboard = () => {
 
   async function usersApi() {
     const data = await fetch("https://jsonplaceholder.typicode.com/users");
-
     const finalData = await data.json();
-
     setUsers(finalData);
   }
 
   async function ordersApi() {
     const data = await fetch("https://dummyjson.com/carts");
-
     const finalData = await data.json();
-
     setOrders(finalData.carts);
   }
-
   async function productsApi() {
     const data = await fetch("https://dummyjson.com/products");
-
     const finalData = await data.json();
-
     setProducts(finalData.products);
   }
 
   async function messagesApi() {
     const data = await fetch("https://dummyjson.com/comments");
-
     const finalData = await data.json();
-
     setMessages(finalData.comments);
   }
 
@@ -52,24 +43,28 @@ const Dashboard = () => {
     <div className="dashboard-data">
       <div className="all-cards">
         <Cards
+         darkMode={darkMode}
           name="Total Users"
           price={users.length}
           growth={`+${users.length}%`}
         />
 
         <Cards
+         darkMode={darkMode}
           name="Total Orders"
           price={orders.length}
           growth={`+${orders.length}%`}
         />
 
         <Cards
+         darkMode={darkMode}
           name="Total Revenue"
           price={`$${totalRevenue}`}
           growth="+15.6%"
         />
 
         <Cards
+         darkMode={darkMode}
           name="New Messages"
           price={messages.length}
           growth={`+${messages.length}%`}
@@ -106,9 +101,7 @@ const Dashboard = () => {
                     {item.total > 500 ? "Completed" : "Pending"}
                   </span>
                 </td>
-
                 <td>${item.total}</td>
-
                 <td>{item.totalProducts}</td>
               </tr>
             ))}

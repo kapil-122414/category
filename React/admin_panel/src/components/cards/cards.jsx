@@ -5,10 +5,8 @@ const cards = (props) => {
     <div>
       <div className="Cards shadow-2xl h-35">
         <div className="py-4 px-5 ">
-          <h1 className="  text-lg text-black font-medium text-left">
-            {props.name}
-          </h1>
-          <h3 className="  text-3xl text-black font-bold text-left">
+          <h1 className=' props.darkMode?"white":black'>{props.name}</h1>
+          <h3 className=' props.darkMode?"white":black'>
             {props.price}
             {props.totaluser}
           </h3>
